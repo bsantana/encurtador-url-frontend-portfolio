@@ -14,3 +14,38 @@ a {
 * {
   box-sizing: border-box;
 }
+
+input[type=submit] {
+  cursor: pointer;
+}
+
+.align-center {
+  text-align: center;
+}
+
+
+.icon-loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+}
+.icon-loader:after {
+  content: " ";
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin: 4px;
+  border-radius: 50%;
+  border: 2px solid #fed;
+  border-color: #fed transparent #fed transparent;
+  animation: icon-loader 1.2s linear infinite;
+}
+@keyframes icon-loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
