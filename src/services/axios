@@ -2,17 +2,19 @@ import axios from 'axios';
 import { parseCookies } from 'nookies';
 
 export function getAPIClient(ctx) {
-  const { 'edu.token': token } = parseCookies(ctx)
+  const token = parseCookies(ctx)
 
   const api = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: 'http://localhost:3330',
   })
 
   api.interceptors.request.use(config => {
-    console.log('interceptors', config);
+    // console.log('interceptors', config);
+    // console.log('env1', process.env.API_URL)
 
     return config;
   })
+  // console.log('toKIN', token)
 
   if(token) {
     api.defaults.headers['x-access-token'] = token;
