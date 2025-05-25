@@ -4,9 +4,11 @@ import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthContext";
 // import Header from "./Header";
 
+import Head from 'next/head'
 import Link from 'next/link'
 
 import MyButton from "./../login/components/button"
+import Header from './../../components/header'
 
 import styles from './../../../styles/Form.module.css'
 
@@ -105,35 +107,46 @@ export default function Auth() {
   
 
   return (
-    <form onSubmit={handleSubmit(handleSignUp)} className={styles.form}>
-      {/* <Header /> */}
-      <input {...register("name")} placeholder="Insira o nome de usuário" className={styles.field} />
-      <input {...register("email")} placeholder="Insira o e-mail" className={styles.field} />
-      <input {...register("password")} placeholder="Inserir senha" type="password" className={styles.field} />
-      <input {...register("re-password")} placeholder="Repetir senha" type="password" className={styles.field} />
-      <div style={{display: 'flex', margin: '20px 27px'}}>
-        <input {...register("checkConfirm")} placeholder="Repetir senha" type="checkbox" id="check" />
-        <label htmlFor="check" style={{marginLeft: 10}}>Eu concordo com os <a href="#" target="_blank" style={{color: 'red'}}>Termos de Serviço</a>.</label>
-      </div>
+    <>
+      <Head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+        </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossOrigin="anonymous" />
+        <link rel='stylesheet' href='/styles/style.css' />
+      </Head>
+      <Header />
+      <form onSubmit={handleSubmit(handleSignUp)} className={styles.form}>
+        <input {...register("name")} placeholder="Insira o nome de usuário" className={styles.field} />
+        <input {...register("email")} placeholder="Insira o e-mail" className={styles.field} />
+        <input {...register("password")} placeholder="Inserir senha" type="password" className={styles.field} />
+        <input {...register("re-password")} placeholder="Repetir senha" type="password" className={styles.field} />
+        <div style={{display: 'flex', margin: '20px 27px'}}>
+          <input {...register("checkConfirm")} placeholder="Repetir senha" type="checkbox" id="check" />
+          <label htmlFor="check" style={{marginLeft: 10}}>Eu concordo com os <a href="#" target="_blank" style={{color: 'red'}}>Termos de Serviço</a>.</label>
+        </div>
 
-      {/* {data && <p>{data}</p>} */}
-      <div style={{
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-        }}>
-        <input type="submit" value={!loading && 'Criar conta'} className={styles.field} style={{borderRadius: 3, border: '1px solid', backgroundColor: loading && 'black'}} />
-        {loading && <div className="icon-loader" style={{marginBottom: 5}}></div>}
-      </div>
-      <br />
-      <hr />
-      <br />
-      <p className="align-center">Já tem uma conta?</p>
-      <Link href="/login" passHref>
-        <MyButton title="Clique aqui para entrar" style={{width: 165, margin: '0 auto', display: 'block', textDecoration: 'underline'}} />
-      </Link>
-      <ToastContainer />
-    </form>
+        {/* {data && <p>{data}</p>} */}
+        <div style={{
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+          }}>
+          <input type="submit" value={!loading && 'Criar conta'} className={styles.field} style={{borderRadius: 3, border: '1px solid', backgroundColor: loading && 'black'}} />
+          {loading && <div className="icon-loader" style={{marginBottom: 5}}></div>}
+        </div>
+        <br />
+        <hr />
+        <br />
+        <p className="align-center">Já tem uma conta?</p>
+        <Link href="/login" passHref>
+          <MyButton title="Clique aqui para entrar" style={{width: 165, margin: '0 auto', display: 'block', textDecoration: 'underline'}} />
+        </Link>
+        <ToastContainer />
+      </form>
+    </>
   );
 }

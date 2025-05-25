@@ -12,7 +12,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 
 // const notify = () => toast("Wow so easy!");
 
-export default function verifyHashToken({ notFound }) {
+export default function VerifyHashToken({ notFound }) {
   const { test } = useContext(AuthContext)
 
   const router = useRouter()
